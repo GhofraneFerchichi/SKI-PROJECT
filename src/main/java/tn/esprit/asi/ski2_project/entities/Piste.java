@@ -25,6 +25,54 @@ public class Piste {
     private int longeur;
     private int pente;
 
+    public long getNumPiste() {
+        return numPiste;
+    }
+
+    public void setNumPiste(long numPiste) {
+        this.numPiste = numPiste;
+    }
+
+    public String getNomPiste() {
+        return nomPiste;
+    }
+
+    public void setNomPiste(String nomPiste) {
+        this.nomPiste = nomPiste;
+    }
+
+    public Couleur getCouleur() {
+        return couleur;
+    }
+
+    public void setCouleur(Couleur couleur) {
+        this.couleur = couleur;
+    }
+
+    public int getLongeur() {
+        return longeur;
+    }
+
+    public void setLongeur(int longeur) {
+        this.longeur = longeur;
+    }
+
+    public int getPente() {
+        return pente;
+    }
+
+    public void setPente(int pente) {
+        this.pente = pente;
+    }
+
+    public List<Skieur> getSkieur() {
+        return skieur;
+    }
+
+    public void setSkieur(List<Skieur> skieur) {
+        this.skieur = skieur;
+    }
+
     @ManyToMany(mappedBy = "piste")
     private List<Skieur> skieur;
 }

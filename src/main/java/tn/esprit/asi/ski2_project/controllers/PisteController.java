@@ -17,23 +17,23 @@ public class PisteController {
     private IPisteService iPisteService;
 
     @PostMapping
-    void add(@RequestBody Piste p){
+   public void add(@RequestBody Piste p){
 
         iPisteService.add(p);
     }
 
     @PutMapping
-    Piste update(@RequestBody Piste p){
+    public Piste update(@RequestBody Piste p){
         return iPisteService.update(p);
     }
 
     @GetMapping
-  public   List<Piste> getAll(){
+    public   List<Piste> getAll(){
         return (List<Piste>) iPisteService.getAll();
     }
 
     @GetMapping("/{id}")
-    Piste getById(@PathVariable long id){
+    public Piste getById(@PathVariable long id){
         return iPisteService.getById(id);
     }
 @DeleteMapping("/{id}")

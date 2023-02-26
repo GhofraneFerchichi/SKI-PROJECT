@@ -18,7 +18,7 @@ public class SkieurController {
     @Autowired
     private ISkieurService iSkieurService;
 
-@PostMapping("/add")
+@PostMapping
     public void add(@RequestBody Skieur s){
 
         iSkieurService.add(s);
@@ -32,7 +32,7 @@ public class SkieurController {
   public   List<Skieur> getAll(){
         return iSkieurService.getAll();
     }
-    @PostMapping("/{id}")
+    @GetMapping("/{id}")
    public Skieur getById(@PathVariable  long id){
         return iSkieurService.getById(id);
     }

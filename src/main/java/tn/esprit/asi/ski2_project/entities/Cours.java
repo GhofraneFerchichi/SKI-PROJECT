@@ -23,6 +23,61 @@ public class Cours {
     private float prix;
     private int creneau;
 
+    public long getNumCours() {
+        return numCours;
+    }
+
+    public void setNumCours(long numCours) {
+        this.numCours = numCours;
+    }
+
+    public int getNiveau() {
+        return niveau;
+    }
+
+    public void setNiveau(int niveau) {
+        this.niveau = niveau;
+    }
+
+    public TypeCours getTypeCours() {
+        return typeCours;
+    }
+
+    public void setTypeCours(TypeCours typeCours) {
+        this.typeCours = typeCours;
+    }
+
+    public Support getSupport() {
+        return support;
+    }
+
+    public void setSupport(Support support) {
+        this.support = support;
+    }
+
+    public float getPrix() {
+        return prix;
+    }
+
+    public void setPrix(float prix) {
+        this.prix = prix;
+    }
+
+    public int getCreneau() {
+        return creneau;
+    }
+
+    public void setCreneau(int creneau) {
+        this.creneau = creneau;
+    }
+
+    public List<Inscription> getIscriptionList() {
+        return iscriptionList;
+    }
+
+    public void setIscriptionList(List<Inscription> iscriptionList) {
+        this.iscriptionList = iscriptionList;
+    }
 
     @OneToMany(mappedBy="cours")
     private List<Inscription> iscriptionList;

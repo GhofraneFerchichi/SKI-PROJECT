@@ -18,6 +18,39 @@ public class Inscription {
     private long numInscription;
 
     private int numSemaine;
+
+    public long getNumInscription() {
+        return numInscription;
+    }
+
+    public void setNumInscription(long numInscription) {
+        this.numInscription = numInscription;
+    }
+
+    public int getNumSemaine() {
+        return numSemaine;
+    }
+
+    public void setNumSemaine(int numSemaine) {
+        this.numSemaine = numSemaine;
+    }
+
+    public Cours getCours() {
+        return cours;
+    }
+
+    public void setCours(Cours cours) {
+        this.cours = cours;
+    }
+
+    public Skieur getSkieur() {
+        return skieur;
+    }
+
+    public void setSkieur(Skieur skieur) {
+        this.skieur = skieur;
+    }
+
     @ManyToOne
     private Cours cours;
     @ManyToOne
