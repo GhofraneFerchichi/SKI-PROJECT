@@ -2,7 +2,10 @@ package tn.esprit.asi.ski2_project.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
+import tn.esprit.asi.ski2_project.entities.Piste;
 import tn.esprit.asi.ski2_project.entities.Skieur;
+import tn.esprit.asi.ski2_project.repositories.PisteRepository;
 import tn.esprit.asi.ski2_project.repositories.SkieurRepository;
 
 import java.util.List;
@@ -12,6 +15,8 @@ public class ISkieurServiceImp implements ISkieurService{
     @Autowired //bch naaml instanciation maghir manaaml instance ++ singleton khatr mafamech classe f repo ana ken interface
     // +  injecter les dépendances(instance)
     private SkieurRepository skieurRepository ;
+    @Autowired
+    private PisteRepository pisteRepository;
 
 
     @Override
@@ -40,5 +45,18 @@ public class ISkieurServiceImp implements ISkieurService{
     public void remove(long id) {
 
          skieurRepository.deleteById(id);
+    }
+
+    public Skieur assignSkieurToPiste(Long numSkieur, Long numPiste) {
+        Skieur skieur = skieurRepository.findById(numSkieur).orElse(null); //recuperation des objets
+        Assert.notNull(skieur,"skieur not found"); //houni ken mal9ach skieur yrajaali msg
+        Piste piste = pisteRepository.findById(numPiste).orElse(null); //recuperation des objets
+        Assert.notNull(skieur,"piste not found");
+       // List<Piste> pistes = skieur.getPiste();
+        //pistes.add(piste);
+        //skieur.setPiste(pistes);
+        // on peut aussi utiliser ci dessous
+        skieur.getPiste().add(piste);
+        return skieurRepository.save(skieur);
     }
 }

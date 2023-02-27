@@ -1,6 +1,7 @@
 package tn.esprit.asi.ski2_project.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -97,13 +98,18 @@ public class Skieur {
                 '}';
     }
 
+
     @OneToMany(mappedBy="skieur")
 
     private List<Inscription> inscription;
 
-    @ManyToMany
-    private List<Piste> piste;
+    public void setNomS(String nomS) {
+        this.nomS = nomS;
+    }
 
+    @ManyToMany
+
+    public List<Piste> piste;
     @OneToOne
     private Abonnement abonnement;
 }

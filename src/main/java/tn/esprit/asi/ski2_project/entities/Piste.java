@@ -1,5 +1,6 @@
 package tn.esprit.asi.ski2_project.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -73,6 +74,8 @@ public class Piste {
         this.skieur = skieur;
     }
 
+
     @ManyToMany(mappedBy = "piste")
+    @JsonIgnore
     private List<Skieur> skieur;
 }
