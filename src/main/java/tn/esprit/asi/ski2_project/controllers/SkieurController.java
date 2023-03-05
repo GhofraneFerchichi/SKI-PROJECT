@@ -47,6 +47,11 @@ public class SkieurController {
         return iSkieurService.assignSkieurToPiste(numSkieur, numPiste);
     }
 
+    @PutMapping("/abon/{numSkieur}/{numAbon}")
+    public Skieur assignSkieurToAbonnement(@PathVariable Long numSkieur, @PathVariable Long numAbon)
+    {
+        return iSkieurService.assignSkieurToAbonnement(numSkieur, numAbon);
+    }
     }
 
 

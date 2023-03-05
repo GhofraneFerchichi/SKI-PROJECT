@@ -20,4 +20,6 @@ public interface ISkieurService {
 
 
     Skieur assignSkieurToPiste(Long numSkieur, Long numPiste);
+
+    Skieur assignSkieurToAbonnement(Long numSkieur, Long numAbon);
 }

@@ -3,8 +3,10 @@ package tn.esprit.asi.ski2_project.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import tn.esprit.asi.ski2_project.entities.Abonnement;
 import tn.esprit.asi.ski2_project.entities.Piste;
 import tn.esprit.asi.ski2_project.entities.Skieur;
+import tn.esprit.asi.ski2_project.repositories.AbonnementRepository;
 import tn.esprit.asi.ski2_project.repositories.PisteRepository;
 import tn.esprit.asi.ski2_project.repositories.SkieurRepository;
 
@@ -18,6 +20,8 @@ public class ISkieurServiceImp implements ISkieurService{
     @Autowired
     private PisteRepository pisteRepository;
 
+    @Autowired
+    private AbonnementRepository abonnementRepository;
 
     @Override
     public void add(Skieur s) {
@@ -59,4 +63,13 @@ public class ISkieurServiceImp implements ISkieurService{
         skieur.getPiste().add(piste);
         return skieurRepository.save(skieur);
     }
+  public  Skieur assignSkieurToAbonnement(Long numSkieur, Long numAbon){
+      Skieur skieur = skieurRepository.findById(numSkieur).orElse(null);
+      Abonnement abonnement = abonnementRepository.findById(numAbon).orElse(null);
+      List<Abonnement> abonnementList = (List<Abonnement>) skieur.getAbonnement();
+
+      abonnementList.add(abonnement);
+      skieur.setAbonnement(abonnement);
+      return skieurRepository.save(skieur);
+  }
 }

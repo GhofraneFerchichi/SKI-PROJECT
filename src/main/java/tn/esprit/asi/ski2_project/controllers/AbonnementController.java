@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.asi.ski2_project.entities.Abonnement;
 import tn.esprit.asi.ski2_project.entities.Inscription;
+import tn.esprit.asi.ski2_project.entities.Skieur;
 import tn.esprit.asi.ski2_project.services.IAbonnementService;
 import tn.esprit.asi.ski2_project.services.IInscriptionService;
 
@@ -41,4 +42,13 @@ public class AbonnementController {
     @DeleteMapping("/{id}")
     void remove(@PathVariable long id)
     {iAbonnementService.remove(id);}
+    @PutMapping("/{numSkieur}/{numAbon}")
+    public Skieur assignSkieurtoAbonnement(@PathVariable long numSkieur, @PathVariable long numAbon)
+    {
+        return iAbonnementService.assignSkieurtoAbonnement(numSkieur,numAbon);
+    }
+
+
+
+
 }
