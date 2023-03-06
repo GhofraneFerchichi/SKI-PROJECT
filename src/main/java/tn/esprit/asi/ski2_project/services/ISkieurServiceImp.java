@@ -6,10 +6,12 @@ import org.springframework.util.Assert;
 import tn.esprit.asi.ski2_project.entities.Abonnement;
 import tn.esprit.asi.ski2_project.entities.Piste;
 import tn.esprit.asi.ski2_project.entities.Skieur;
+import tn.esprit.asi.ski2_project.entities.TypeAbonnement;
 import tn.esprit.asi.ski2_project.repositories.AbonnementRepository;
 import tn.esprit.asi.ski2_project.repositories.PisteRepository;
 import tn.esprit.asi.ski2_project.repositories.SkieurRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 @Service // yasnaa service bch yinjecti fiha l'instance li mawjouda f repo
 public class ISkieurServiceImp implements ISkieurService{
@@ -65,11 +67,19 @@ public class ISkieurServiceImp implements ISkieurService{
     }
   public  Skieur assignSkieurToAbonnement(Long numSkieur, Long numAbon){
       Skieur skieur = skieurRepository.findById(numSkieur).orElse(null);
+      Assert.notNull(skieur,"not found");
       Abonnement abonnement = abonnementRepository.findById(numAbon).orElse(null);
-      List<Abonnement> abonnementList = (List<Abonnement>) skieur.getAbonnement();
-
-      abonnementList.add(abonnement);
+      Assert.notNull(abonnement,"not found");
       skieur.setAbonnement(abonnement);
       return skieurRepository.save(skieur);
   }
+
+    @Override
+    public List<Skieur> retrieveSkiersBySubscriptionType(TypeAbonnement typeAbonnement) {
+
+          return    skieurRepository.findByAbonnementTypeAbon(typeAbonnement);
+
+    }
+
+
 }

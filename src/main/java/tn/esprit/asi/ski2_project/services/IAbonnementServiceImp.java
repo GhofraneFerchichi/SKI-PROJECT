@@ -4,10 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.asi.ski2_project.entities.Abonnement;
 import tn.esprit.asi.ski2_project.entities.Skieur;
+import tn.esprit.asi.ski2_project.entities.TypeAbonnement;
 import tn.esprit.asi.ski2_project.repositories.AbonnementRepository;
 import tn.esprit.asi.ski2_project.repositories.SkieurRepository;
 
 import java.util.List;
+import java.util.Set;
+
 @Service
 public class IAbonnementServiceImp implements IAbonnementService{
     @Autowired
@@ -45,5 +48,10 @@ public class IAbonnementServiceImp implements IAbonnementService{
         Skieur skieur = skieurRepository.findById(numSkieur).orElse(null);
         Abonnement abonnement = abonnementRepository.findById(numAbon).orElse(null);
         return  skieurRepository.save(skieur);
+    }
+
+    @Override
+    public Set<Abonnement> getSubscriptionByType(TypeAbonnement type) {
+        return abonnementRepository.findByTypeAbon(type);
     }
 }

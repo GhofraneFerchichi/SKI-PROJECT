@@ -1,10 +1,9 @@
 package tn.esprit.asi.ski2_project.services;
 
-import tn.esprit.asi.ski2_project.entities.Abonnement;
-import tn.esprit.asi.ski2_project.entities.Cours;
-import tn.esprit.asi.ski2_project.entities.Skieur;
+import tn.esprit.asi.ski2_project.entities.*;
 
 import java.util.List;
+import java.util.Set;
 
 public interface IAbonnementService {
     void add(Abonnement a);
@@ -16,5 +15,5 @@ public interface IAbonnementService {
     Abonnement getById(long id);
 
     void remove(long id);
-    Skieur assignSkieurtoAbonnement(long numSkieur, long numAbon);
+    Set<Abonnement> getSubscriptionByType(TypeAbonnement type);
 }

@@ -5,6 +5,7 @@ import org.hibernate.Remove;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.asi.ski2_project.entities.Skieur;
+import tn.esprit.asi.ski2_project.entities.TypeAbonnement;
 import tn.esprit.asi.ski2_project.services.ISkieurService;
 
 import java.util.List;
@@ -51,6 +52,10 @@ public class SkieurController {
     public Skieur assignSkieurToAbonnement(@PathVariable Long numSkieur, @PathVariable Long numAbon)
     {
         return iSkieurService.assignSkieurToAbonnement(numSkieur, numAbon);
+    }
+    @GetMapping("/skibysub/{typeAbonnement}")
+    public List<Skieur> retrieveSkiersBySubscriptionType(@PathVariable TypeAbonnement typeAbonnement){
+       return iSkieurService.retrieveSkiersBySubscriptionType(typeAbonnement);
     }
     }
 

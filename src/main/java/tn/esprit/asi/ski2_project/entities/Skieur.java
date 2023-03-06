@@ -9,6 +9,7 @@ import lombok.ToString;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -44,11 +45,11 @@ public class Skieur {
         return ville;
     }
 
-    public List<Inscription> getInscription() {
+    public Set<Inscription> getInscription() {
         return inscription;
     }
 
-    public List<Piste> getPiste() {
+    public Set<Piste> getPiste() {
         return piste;
     }
 
@@ -72,11 +73,11 @@ public class Skieur {
         this.ville = ville;
     }
 
-    public void setInscription(List<Inscription> inscription) {
+    public void setInscription(Set<Inscription> inscription) {
         this.inscription = inscription;
     }
 
-    public void setPiste(List<Piste> piste) {
+    public void setPiste(Set<Piste> piste) {
         this.piste = piste;
     }
 
@@ -101,7 +102,7 @@ public class Skieur {
 
     @OneToMany(mappedBy="skieur")
 
-    private List<Inscription> inscription;
+    private Set<Inscription> inscription;
 
     public void setNomS(String nomS) {
         this.nomS = nomS;
@@ -109,7 +110,7 @@ public class Skieur {
 
     @ManyToMany
 
-    public List<Piste> piste;
+    public Set<Piste> piste;
     @OneToOne
     private Abonnement abonnement;
 }
